@@ -5,7 +5,10 @@ import { VantResolver } from "unplugin-vue-components/resolvers";
 import { VitePWA } from "vite-plugin-pwa";
 import replace from "@rollup/plugin-replace";
 
-const replaceOptions = { __DATE__: new Date().toISOString() };
+const replaceOptions = {
+  __DATE__: new Date().toISOString(),
+  preventAssignment : true,
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
