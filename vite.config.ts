@@ -15,9 +15,12 @@ export default defineConfig({
       resolvers: [VantResolver()],
     }),
     VitePWA({
+      mode: "development",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
       registerType: "autoUpdate",
-      injectRegister: "auto",
+      // strategies: "injectManifest",
+      // selfDestroying: true,
+      // injectRegister: "auto",
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
         cleanupOutdatedCaches: false,
@@ -43,8 +46,9 @@ export default defineConfig({
       devOptions: {
         enabled: true,
         /* other options */
-        // type: "module",
+        type: "module",
         // navigateFallback: "index.html",
+        navigateFallback: "index.html",
       },
     }),
     replace(replaceOptions),
