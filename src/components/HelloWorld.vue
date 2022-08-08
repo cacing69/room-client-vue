@@ -10,7 +10,7 @@ const count = ref(0)
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <van-button round type="primary" @click="count++">v5 count is {{ count }}</van-button>
+    <van-button round type="primary" @click="count++">v5.1 count is {{ count }}</van-button>
   </div>
 </template>
 

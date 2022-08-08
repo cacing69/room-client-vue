@@ -52,14 +52,14 @@ const close = async () => {
     role="alert"
   >
     <div class="message">
-      <span v-if="offlineReady">
+      <span>
         App ready to work offline
       </span>
-      <span v-else>
+      <span>
         New content available, click on reload button to update.
       </span>
     </div>
-    <button v-if="needRefresh" @click="updateServiceWorker()">
+    <button @click="updateServiceWorker()">
       Reload
     </button>
     <button @click="close">
