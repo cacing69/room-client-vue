@@ -4,7 +4,9 @@ import { ref } from 'vue'
 defineProps<{ msg: string }>()
 
 const count = ref(0)
-const reload = () => window.location.reload
+const reload = () => {
+  window.location.reload()
+}
 </script>
 
 <template>
@@ -13,7 +15,7 @@ const reload = () => window.location.reload
   <div class="card">
     <van-button round type="primary" @click="count++">count is {{ count }}</van-button>
   </div>
-  <small>v 1.2.0</small>
+  <small>v 1.2.1</small>
   <br>
   <van-button round type="primary" @click="reload" size="mini">reload</van-button>
 </template>
