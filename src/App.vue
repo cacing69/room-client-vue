@@ -24,7 +24,8 @@ const close = async () => {
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="">
+    <HelloWorld msg="Vite + Vue" />
   <div
     v-if="offlineReady || needRefresh"
     class="pwa-toast"
@@ -46,9 +47,7 @@ const close = async () => {
     </button>
   </div>
   <hr>
-  <div
-    v-if="offlineReady || needRefresh"
-    class="pwa-toast"
+  <div class="pwa-toast"
     role="alert"
   >
     <div class="message">
@@ -65,6 +64,7 @@ const close = async () => {
     <button @click="close">
       Close
     </button>
+  </div>
   </div>
 </template>
 
