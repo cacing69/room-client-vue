@@ -10,6 +10,21 @@ const replaceOptions = {
   preventAssignment : true,
 };
 
+const getCache = ({ name, pattern }: any) => ({
+  urlPattern: pattern,
+  handler: "CacheFirst" as const,
+  options: {
+    cacheName: name,
+    expiration: {
+      maxEntries: 500,
+      maxAgeSeconds: 60 * 60 * 24 * 365 * 2, // 2 years
+    },
+    cacheableResponse: {
+      statuses: [200],
+    },
+  },
+});
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -25,12 +40,24 @@ export default defineConfig({
       // selfDestroying: true,
       // injectRegister: "auto",
       workbox: {
+        // importScripts: ["sw-code.js"],
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
         cleanupOutdatedCaches: false,
+        runtimeCaching: [
+          getCache({
+            pattern: /^https:\/\/s3.amazonaws.com\/my-library-cover-uploads/,
+            name: "local-images1",
+          }),
+          getCache({
+            pattern: /^https:\/\/my-library-cover-uploads.s3.amazonaws.com/,
+            name: "local-images2",
+          }),
+        ],
       },
       manifest: {
         name: "My Awesome App",
         short_name: "MyApp",
+        display: "standalone",
         description: "My Awesome App description",
         theme_color: "#ffffff",
         icons: [
@@ -50,10 +77,9 @@ export default defineConfig({
         enabled: true,
         /* other options */
         type: "module",
-        // navigateFallback: "index.html",
         navigateFallback: "index.html",
       },
     }),
-    replace(replaceOptions),
+    // replace(replaceOptions),
   ],
 });
