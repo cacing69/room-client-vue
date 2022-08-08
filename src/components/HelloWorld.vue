@@ -4,7 +4,7 @@ import { ref } from 'vue'
 defineProps<{ msg: string }>()
 
 const count = ref(0)
-const reload = () => window.location.reload(true)
+const reload = () => window.location.reload
 </script>
 
 <template>
