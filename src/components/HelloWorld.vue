@@ -13,8 +13,9 @@ const reload = () => window.location.reload
   <div class="card">
     <van-button round type="primary" @click="count++">count is {{ count }}</van-button>
   </div>
-  <small>v 1.0</small>
-  <van-button round type="primary" @click="reload" size="mini">count is {{ count }}</van-button>
+  <small>v 1.1</small>
+  <br>
+  <van-button round type="primary" @click="reload" size="mini">reload</van-button>
 </template>
 
 <style scoped>
