@@ -26,45 +26,26 @@ const close = async () => {
 <template>
   <div class="">
     <HelloWorld msg="Vite + Vue" />
-  <div
-    v-if="offlineReady || needRefresh"
-    class="pwa-toast"
-    role="alert"
-  >
-    <div class="message">
-      <span v-if="offlineReady">
-        App ready to work offline
-      </span>
-      <span v-else>
-        New content available, click on reload button to update.
-      </span>
+    <div
+      v-if="offlineReady || needRefresh"
+      class="pwa-toast"
+      role="alert"
+    >
+      <div class="message">
+        <span v-if="offlineReady">
+          App ready to work offline
+        </span>
+        <span v-else>
+          New content available, click on reload button to update.
+        </span>
+      </div>
+      <button v-if="needRefresh" @click="updateServiceWorker()">
+        Reload
+      </button>
+      <button @click="close">
+        Close
+      </button>
     </div>
-    <button v-if="needRefresh" @click="updateServiceWorker()">
-      Reload
-    </button>
-    <button @click="close">
-      Close
-    </button>
-  </div>
-  <hr>
-  <div class="pwa-toast"
-    role="alert"
-  >
-    <div class="message">
-      <span>
-        App ready to work offline
-      </span>
-      <span>
-        New content available, click on reload button to update.
-      </span>
-    </div>
-    <button @click="updateServiceWorker()">
-      Reload
-    </button>
-    <button @click="close">
-      Close
-    </button>
-  </div>
   </div>
 </template>
 

@@ -38,7 +38,7 @@ export default defineConfig({
       registerType: "autoUpdate",
       // strategies: "injectManifest",
       // selfDestroying: true,
-      // injectRegister: "auto",
+      injectRegister: "auto",
       workbox: {
         // importScripts: ["sw-code.js"],
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
@@ -53,6 +53,8 @@ export default defineConfig({
             name: "local-images2",
           }),
         ],
+        clientsClaim: true,
+        skipWaiting: true,
       },
       manifest: {
         name: "My Awesome App",
